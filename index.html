@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEP UP | Anas & Hashir Premium Footwear</title>
+    <style>
+        :root {
+            --primary-black: #1a1a1a;
+            --accent-gold: #c5a059;
+            --light-gray: #f4f4f4;
+            --white: #ffffff;
+            --blue-link: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--primary-black);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-black);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 4px; }
+        .hero p { font-size: 1.2rem; margin: 15px 0 30px; opacity: 0.9; }
+
+        /* Owner Section */
+        .owners-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--accent-gold);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* Product Grid */
+        .container { padding: 60px 8%; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .price { color: var(--accent-gold); font-weight: bold; font-size: 1.2rem; }
+
+        /* --- DEVELOPED BY MINHAJ (Your Signature) --- */
+        .dev-container {
+            margin-top: 50px;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        .dev-by {
+            font-size: 10px;
+            color: #718096;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .minhaj-text span {
+            font-size: 22px;
+            color: var(--blue-link); 
+            font-weight: 900;
+            display: inline-block;
+            animation: bounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+            text-shadow: 0 0 2px rgba(37, 99, 235, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .minhaj-text span:nth-child(2) { animation-delay: 0.05s; }
+        .minhaj-text span:nth-child(3) { animation-delay: 0.1s; }
+        .minhaj-text span:nth-child(4) { animation-delay: 0.15s; }
+        .minhaj-text span:nth-child(5) { animation-delay: 0.2s; }
+        .minhaj-text span:nth-child(6) { animation-delay: 0.25s; }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">STEP UP</div>
+        <ul class="nav-links">
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">COLLECTION</a></li>
+            <li><a href="#">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="owners-tag">OWNED BY ANAS & HASHIR</div>
+        <h1>Premium Footwear</h1>
+        <p>Walking with Elegance, Built by Excellence.</p>
+        <button style="padding: 12px 30px; background: var(--accent-gold); border: none; color: white; cursor: pointer; font-weight: bold;">EXPLORE NOW</button>
+    </header>
+
+    <section class="container">
+        <div class="section-title">
+            <h2>GENTS COLLECTION</h2>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="WhatsApp Image 2026-01-23 at 5.52.52 PM.jpeg" class="product-img">
+                <h3>NIKE SB  </h3>
+                <p class="price">₹2,499</p>
+            </div>
+            <div class="product-card">
+                <img src="WhatsApp Image 2026-01-26 at 5.43.50 PM.jpeg" class="product-img">
+                <h3>White Urban Sneaker</h3>
+                <p class="price">₹1,599</p>
+            </div>
+            <div class="product-card">
+                <img src="WhatsApp Image 2026-02-01 at 7.55.24 PM.jpeg" class="product-img">
+                <h3>Black Chelsea Boot</h3>
+                <p class="price">₹1,299</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="dev-container">
+        <div class="dev-by">DEVELOPED BY</div>
+        <div class="minhaj-text">
+            <span>M</span><span>I</span><span>N</span><span>H</span><span>A</span><span>J</span>
+        </div>
+        <p style="font-size: 12px; color: #aaa; margin-top: 15px;">© 2026 Step Up Footwear | All Rights Reserved</p>
+    </div>
+
+</body>
+</html>
