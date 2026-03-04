@@ -24,6 +24,7 @@
             background-color: var(--white);
             color: var(--primary-black);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -33,7 +34,8 @@
             align-items: center;
             padding: 20px 8%;
             background: var(--white);
-            position: sticky;
+            position: fixed; /* Changed to fixed for smoother overlay */
+            width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -58,93 +60,104 @@
             font-size: 0.9rem;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        /* --- NEW SCROLL ANIMATION SECTION --- */
+        .scroll-showcase {
+            height: 300vh; /* Determines scroll length */
+            background: radial-gradient(circle, #ffffff 0%, #f0f0f0 100%);
+        }
+
+        .sticky-box {
+            position: sticky;
+            top: 0;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        .hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 4px; }
-        .hero p { font-size: 1.2rem; margin: 15px 0 30px; opacity: 0.9; }
-
-        /* Owner Section */
-        .owners-tag {
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid var(--accent-gold);
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+        .big-text-bg {
+            position: absolute;
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(0,0,0,0.03);
+            white-space: nowrap;
+            z-index: 1;
+            text-transform: uppercase;
         }
 
-        /* Product Grid */
-        .container { padding: 60px 8%; }
+        #main-animated-shoe {
+            width: 450px;
+            z-index: 10;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.2));
+            transition: transform 0.1s ease-out;
+            pointer-events: none;
+        }
+
+        .scroll-instruction {
+            position: absolute;
+            bottom: 40px;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        /* --- EXISTING SECTIONS --- */
+        .container { 
+            padding: 80px 8%; 
+            background: white;
+            position: relative;
+            z-index: 20;
+        }
+
         .section-title { text-align: center; margin-bottom: 40px; }
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .product-card {
             border: 1px solid #eee;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .product-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--accent-gold);
+        }
 
         .product-img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
             margin-bottom: 15px;
+            border-radius: 8px;
         }
 
         .price { color: var(--accent-gold); font-weight: bold; font-size: 1.2rem; }
 
-        /* --- DEVELOPED BY MINHAJ (Your Signature) --- */
+        /* Developer Footer */
         .dev-container {
-            margin-top: 50px;
-            padding: 30px 0;
+            padding: 50px 0;
             text-align: center;
-            border-top: 1px solid #eee;
+            background: #fafafa;
         }
-        .dev-by {
-            font-size: 10px;
-            color: #718096;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
+        .dev-by { font-size: 10px; color: #718096; letter-spacing: 2px; font-weight: bold; }
         .minhaj-text span {
-            font-size: 22px;
+            font-size: 24px;
             color: var(--blue-link); 
             font-weight: 900;
             display: inline-block;
-            animation: bounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
-            text-shadow: 0 0 2px rgba(37, 99, 235, 0.2);
-            letter-spacing: 2px;
+            animation: bounce 0.4s infinite alternate;
         }
-
-        .minhaj-text span:nth-child(2) { animation-delay: 0.05s; }
-        .minhaj-text span:nth-child(3) { animation-delay: 0.1s; }
-        .minhaj-text span:nth-child(4) { animation-delay: 0.15s; }
-        .minhaj-text span:nth-child(5) { animation-delay: 0.2s; }
-        .minhaj-text span:nth-child(6) { animation-delay: 0.25s; }
+        .minhaj-text span:nth-child(n+1) { animation-delay: calc(0.05s * var(--i)); }
 
         @keyframes bounce {
             from { transform: translateY(0); }
@@ -152,7 +165,7 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            #main-animated-shoe { width: 80%; }
             .nav-links { display: none; }
         }
     </style>
@@ -168,32 +181,36 @@
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="owners-tag">OWNED BY ANAS & HASHIR</div>
-        <h1>Premium Footwear</h1>
-        <p>Walking with Elegance, Built by Excellence.</p>
-        <button style="padding: 12px 30px; background: var(--accent-gold); border: none; color: white; cursor: pointer; font-weight: bold;">EXPLORE NOW</button>
-    </header>
+    <section class="scroll-showcase">
+        <div class="sticky-box">
+            <div class="big-text-bg" id="bg-text">AURA STEP</div>
+            
+            <img src="WhatsApp Image 2026-01-23 at 5.52.52 PM.jpeg" id="main-animated-shoe" alt="Premium Shoe">
+            
+            <div class="scroll-instruction">SCROLL TO EXPLORE</div>
+        </div>
+    </section>
 
     <section class="container">
         <div class="section-title">
-            <h2>GENTS COLLECTION</h2>
+            <p style="color: var(--accent-gold); font-weight: bold; letter-spacing: 2px;">PREMIUM QUALITY</p>
+            <h2 style="font-size: 2.5rem;">GENTS COLLECTION</h2>
         </div>
 
         <div class="product-grid">
             <div class="product-card">
                 <img src="WhatsApp Image 2026-01-23 at 5.52.52 PM.jpeg" class="product-img">
-                <h3>NIKE SB  </h3>
+                <h3>NIKE SB PREMIUM</h3>
                 <p class="price">₹2,499</p>
             </div>
             <div class="product-card">
                 <img src="WhatsApp Image 2026-01-26 at 5.43.50 PM.jpeg" class="product-img">
-                <h3>White Urban Sneaker</h3>
+                <h3>WHITE URBAN SNEAKER</h3>
                 <p class="price">₹1,599</p>
             </div>
             <div class="product-card">
                 <img src="WhatsApp Image 2026-02-01 at 7.55.24 PM.jpeg" class="product-img">
-                <h3>Black Chelsea Boot</h3>
+                <h3>BLACK CHELSEA BOOT</h3>
                 <p class="price">₹1,299</p>
             </div>
         </div>
@@ -202,10 +219,40 @@
     <div class="dev-container">
         <div class="dev-by">DEVELOPED BY</div>
         <div class="minhaj-text">
-            <span>M</span><span>I</span><span>N</span><span>H</span><span>A</span><span>J</span>
+            <span style="--i:1">M</span><span style="--i:2">I</span><span style="--i:3">N</span><span style="--i:4">H</span><span style="--i:5">A</span><span style="--i:6">J</span>
         </div>
         <p style="font-size: 12px; color: #aaa; margin-top: 15px;">© 2026 Step Up Footwear | All Rights Reserved</p>
     </div>
 
+    <script>
+        window.addEventListener('scroll', () => {
+            const shoe = document.getElementById('main-animated-shoe');
+            const bgText = document.getElementById('bg-text');
+            const scrollContainer = document.querySelector('.scroll-showcase');
+            
+            // Calculate progress (0 to 1)
+            const rect = scrollContainer.getBoundingClientRect();
+            const scrollProgress = Math.abs(rect.top) / (scrollContainer.clientHeight - window.innerHeight);
+            const p = Math.min(Math.max(scrollProgress, 0), 1);
+
+            // 1. Shoe Animation: Zoom + Rotate + Slide
+            const scale = 1 + (p * 1.2); // Grows as you scroll
+            const rotate = p * 360;      // Full 360 spin
+            const xMove = p > 0.8 ? (p - 0.8) * 2000 : 0; // Flies off screen at end
+
+            shoe.style.transform = `scale(${scale}) rotate(${rotate}deg) translateX(${xMove}px)`;
+
+            // 2. Background Text Parallax
+            bgText.style.letterSpacing = `${p * 50}px`;
+            bgText.style.opacity = (1 - p) * 0.1;
+
+            // 3. Smooth Opacity for the shoe
+            if (p > 0.9) {
+                shoe.style.opacity = (1 - p) * 10;
+            } else {
+                shoe.style.opacity = 1;
+            }
+        });
+    </script>
 </body>
 </html>
